@@ -16,12 +16,6 @@ def create_user_profile(sender, instance, created, **kwargs):
         post_save.connect(create_user_profile, sender=User)
 
 
-class Penalty(models.Model):
-    user = models.ForeignKey( FSUser )
-    permanent = models.BooleanField(default=False)
-    end_date = models.DateTimeField(blank=True)
-    channel = models.ForeignKey(blank=True)
-
 class Post(models.Model):
     text = models.CharField(max_length=2000)
     pub_date  = models.DateTimeField()
@@ -61,3 +55,9 @@ class UserChannel(models.Model):
     user = models.ForeignKey( FSUser )
     channel = models.ForeignKey( Channel )
 
+class Penalty(models.Model):
+    user = models.ForeignKey( FSUser )
+    permanent = models.BooleanField(default=False)
+    total = models.BooleanField(default=False)
+    end_date = models.DateTimeField(blank=True)
+    channel = models.ForeignKey( Channel, blank=True )
