@@ -12,8 +12,9 @@ class FSUser(models.Model):
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        profile, created = Soci.objects.get_or_create(user=instance)
-        post_save.connect(create_user_profile, sender=User)
+        profile, created = FSUser.objects.get_or_create(user=instance)
+# link user to FSUser creation
+post_save.connect(create_user_profile, sender=User)
 
 
 class Post(models.Model):
@@ -22,6 +23,8 @@ class Post(models.Model):
     edit_date = models.DateTimeField(blank=True)
     user = models.ForeignKey( FSUser )
     #image = 
+    def __unicode__(self):
+        return self.user.user.username
 
 class Like(models.Model):
     post = models.ForeignKey( Post )
