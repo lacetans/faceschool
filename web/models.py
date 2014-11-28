@@ -48,19 +48,16 @@ class Reputation(models.Model):
     points = models.IntegerField()
 
 class Channel(models.Model):
-    responsible = models.ForeignKey( FSUser )
+    responsible = models.ForeignKey( FSUser, related_name='responsible' )
     topic = models.CharField(max_length=200)
     description = models.TextField()
+    users = models.ManyToManyField( FSUser )
     def __unicode__(self):
         return self.topic
-
-class UserChannel(models.Model):
-    user = models.ForeignKey( FSUser )
-    channel = models.ForeignKey( Channel )
 
 class Penalty(models.Model):
     user = models.ForeignKey( FSUser )
     permanent = models.BooleanField(default=False)
     total = models.BooleanField(default=False)
     end_date = models.DateTimeField(blank=True)
-    channel = models.ForeignKey( Channel, blank=True )
+    channel = models.ForeignKey( Channel, blank=True, null=True )

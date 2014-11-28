@@ -9,5 +9,4 @@ admin.site.register( Like )
 admin.site.register( Dislike )
 admin.site.register( Complaint )
 admin.site.register( Channel )
-admin.site.register( UserChannel )
 
