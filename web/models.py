@@ -33,7 +33,7 @@ class Post(models.Model):
     channel = models.ForeignKey( Channel )
     #image = 
     def __unicode__(self):
-        return "[%s] %s..." % (self.user.user.username,self.text[:20])
+        return "[%s] %s..." % (self.user.user.username,self.text[:30])
 
 class Comment(Post):
     # same funcionality as Post with the related post
