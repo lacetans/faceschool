@@ -23,7 +23,7 @@ class Channel(models.Model):
     description = models.TextField()
     users = models.ManyToManyField( FSUser )
     def __unicode__(self):
-        return self.topic
+        return "[%s] %s" % (self.responsible.user.username, self.topic)
 
 class Post(models.Model):
     text = models.CharField(max_length=2000)
