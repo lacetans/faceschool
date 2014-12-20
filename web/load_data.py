@@ -14,7 +14,7 @@ for row in dataReader:
     if row[0]!="username":
         FSUser = FSUser()
         FSUser.user.username = row[0]
-        FSUser.user.first_name = row[1];
-        FSUser.user.last_name = row[2];
+        FSUser.user.first_name = row[1]
+        FSUser.user.last_name = row[2]
         FSUser.user.email = row[3]
         FSUser.save()

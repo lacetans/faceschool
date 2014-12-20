@@ -7,7 +7,7 @@ from models import *
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('topic','responsible',)
     filter_horizontal = ('users',)
-    form = DataImport
+
     def get_readonly_fields(self, request, obj=None):
         if request.user.is_superuser:
             return self.readonly_fields
