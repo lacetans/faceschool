@@ -1,12 +1,13 @@
 from django.contrib import admin
-
 from models import *
+
 
 # ChannelAdmin requirements can be checked in issue #12 (create channel view)
 # https://github.com/lacetans/faceschool/issues/12
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('topic','responsible',)
     filter_horizontal = ('users',)
+    form = DataImport
     def get_readonly_fields(self, request, obj=None):
         if request.user.is_superuser:
             return self.readonly_fields
