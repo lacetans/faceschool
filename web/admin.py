@@ -15,7 +15,7 @@ class ChannelAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         # superuser can modify channel responsible
         if request.user.is_superuser:
-            obj.save
+            obj.save()
             return
         # force responsible to logged user (when creating channel)
         fsuser = request.user.fsuser
