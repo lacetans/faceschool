@@ -66,3 +66,21 @@ class Penalty(models.Model):
     total = models.BooleanField(default=False)
     end_date = models.DateTimeField(blank=True)
     channel = models.ForeignKey( Channel, blank=True, null=True )
+
+class Badws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Goodws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Removebadws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Removegoodws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Badwsmasiva(models.Model):
+    archivo = models.FileField(upload_to='import/')
+
+class Goodwsmasiva(models.Model):
+    archivo = models.FileField(upload_to='import/')

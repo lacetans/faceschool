@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>
+    List of banned words
+      
+  </h1>
+  <a href="/badw/" style="text-decoration:none"><input type="button" value="Add word"></a> 
+<a href="/badwmasiva/" style="text-decoration:none"><input type="button" value="Add file"></a>  
+<a href="/removebadw/" style="text-decoration:none"><input type="button" value="Remove word"></a>    
+    
+  
+  {% for word in badws %}
+    
+  <div class="art">
+    
+    
+    <p>
+      {{ word.texto }}
+          
+    </p>
+      
+  </div>
+    
+    
+
+  {% endfor %}
+  
+</div>
