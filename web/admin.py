@@ -29,37 +29,11 @@ class ChannelAdmin(admin.ModelAdmin):
         # show only owned channels (teachers)
         return qs.filter(users=request.user.fsuser)
 
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('user','channel','text','pub_date')
-    #filter_horizontal = ('user',)
-    def get_readonly_fields(self, request, obj=None):
-        if request.user.is_superuser:
-            return self.readonly_fields 
-        # if not superuser, disable responsible field
-        return self.readonly_fields + ('channel','text')
-    def save_model(self, request, obj, form, change):
-        # superuser can modify channel responsible
-        if request.user.is_superuser:
-            obj.save()
-            return
-        # force responsible to logged user (when creating channel)
-        fsuser = request.user.fsuser
-        obj.user = fsuser
-        obj.save()
-    def queryset(self, request):
-        #qs = super(PostAdmin, self).get_queryset(request)
-        channels=Channel.objects.filter(user__in=Channel.users)
-        # superuser can see all channels
-        if request.user.is_superuser:
-            return qs
-        # show only owned channels (teachers)
-        #return qs.filter(user=request.user.fsuser)
-	return Post.objects.filter(channel__in=channels)
       
 
 admin.site.register( FSUser )
 admin.site.register( Penalty )
-admin.site.register( Post, PostAdmin )
+admin.site.register( Post )
 admin.site.register( Like )
 admin.site.register( Dislike )
 admin.site.register( Complaint )
