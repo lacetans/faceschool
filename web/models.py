@@ -33,7 +33,7 @@ class Post(models.Model):
     channel = models.ForeignKey( Channel )
     #image = 
     def __unicode__(self):
-        return "[%s] %s..." % (self.user.user.username,self.text[:30])
+        return "[%s] %s...%s %s" % (self.user.user.username,self.text[:30],self.channel,self.pub_date)
 
 class Comment(Post):
     # same funcionality as Post with the related post
@@ -69,9 +69,13 @@ class Penalty(models.Model):
 
 class Badws(models.Model):
     texto = models.CharField(max_length = 30)
+    def __unicode__(self):
+        return self.texto
 
 class Goodws(models.Model):
     texto = models.CharField(max_length = 30)
+    def __unicode__(self):
+        return self.texto
 
 class Removebadws(models.Model):
     texto = models.CharField(max_length = 30)

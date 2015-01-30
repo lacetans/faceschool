@@ -27,7 +27,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 def index( request ):
-    latest_posts = Post.objects.order_by('-pub_date')[:5]
+    latest_posts = Post.objects.order_by('-pub_date')[:30]
     return render( request, 'latest_posts.html', {"latest_posts": latest_posts} )
 
 def post_detail( request, post_id ):
@@ -44,7 +44,7 @@ def crear(request):
 	    else:
 	        form.save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/web')
     else:
         form = PostForm()
     
@@ -63,7 +63,7 @@ def badw(request):
         if form.is_valid():
             message = form.cleaned_data['texto']
             form.save()
-            return HttpResponseRedirect('/badwlist')
+            return HttpResponseRedirect('/web/badwlist')
     else:
         form = BadwForm()
     args = {}
@@ -77,7 +77,7 @@ def goodw(request):
         if form.is_valid():
             message = form.cleaned_data['texto']
 	    form.save()
-            return HttpResponseRedirect('/goodwlist')
+            return HttpResponseRedirect('/web/goodwlist')
     else:
         form = GoodwForm()
     args = {}
@@ -100,7 +100,7 @@ def badwmasiva(request):
             archivo = request.FILES['archivo']
             bmasive_upload_filter(archivo)
             form.save()
-            return HttpResponseRedirect('/badwlist')
+            return HttpResponseRedirect('/web/badwlist')
     else:
         form = BadwmasivaForm()
     args = {}
@@ -115,7 +115,7 @@ def goodwmasiva(request):
             archivo = request.FILES['archivo']
 	    gmasive_upload_filter(archivo)
             form.save()
-            return HttpResponseRedirect('/goodwlist')
+            return HttpResponseRedirect('/web/goodwlist')
     else:
         form = GoodwmasivaForm()
     args = {}
@@ -129,7 +129,7 @@ def removegoodw(request):
         if form.is_valid():
             message = form.cleaned_data['texto']
             gremove_filter(message)
-            return HttpResponseRedirect('/goodwlist')
+            return HttpResponseRedirect('/web/goodwlist')
     else:
         form = RemovegoodwForm()
     args = {}
@@ -143,7 +143,7 @@ def removebadw(request):
         if form.is_valid():
             message = form.cleaned_data['texto']
 	    bremove_filter(message)
-            return HttpResponseRedirect('/badwlist')
+            return HttpResponseRedirect('/web/badwlist')
     else:
         form = RemovebadwForm()
     args = {}
