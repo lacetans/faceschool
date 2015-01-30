@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^goodwlist/', 'web.views.goodwlist', name='goodwlist'),
     url(r'^badwmasiva/', 'web.views.badwmasiva', name='badwmasiva'),
     url(r'^goodwmasiva/', 'web.views.goodwmasiva', name='goodwmasiva'),
+    url(r'^filtererror/', 'web.views.filtererror', name='filtererror'),
 ]

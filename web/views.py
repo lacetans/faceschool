@@ -41,6 +41,7 @@ def crear(request):
 	    message = str(message).encode('utf-8')
 	    if (language_filter(message)=="no"):
 		message = "Don't publish"
+                return HttpResponseRedirect('/web/filtererror')
 	    else:
 	        form.save()
 
@@ -151,3 +152,5 @@ def removebadw(request):
     args['form'] = form 
     return render_to_response('removebadw.html', args)
 
+def filtererror(request):
+    return render_to_response('filtererror.html')

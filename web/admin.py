@@ -47,15 +47,14 @@ class PostAdmin(admin.ModelAdmin):
         obj.user = fsuser
         obj.save()
     def queryset(self, request):
-        qs = super(PostAdmin, self).get_queryset(request)
+        #qs = super(PostAdmin, self).get_queryset(request)
+        channels=Channel.objects.filter(user__in=Channel.users)
         # superuser can see all channels
         if request.user.is_superuser:
             return qs
         # show only owned channels (teachers)
-	#print Channel.users.fsuser
-	print Channel.users
-	
-        return qs.filter(user=request.user.fsuser,user__in=Channel.users)
+        #return qs.filter(user=request.user.fsuser)
+	return Post.objects.filter(channel__in=channels)
       
 
 admin.site.register( FSUser )
