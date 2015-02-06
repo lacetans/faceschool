@@ -53,6 +53,9 @@ ROOT_URLCONF = 'faceschool.urls'
 
 WSGI_APPLICATION = 'faceschool.wsgi.application'
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'web/media')
+
+MEDIA_URL = 'http://127.0.0.1:8000/web/media/'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

@@ -5,17 +5,14 @@ from django.db.models.signals import post_save
 
 class FSUser(models.Model):
     user = models.OneToOneField( User )
+    upload_path = 'users_images'
     # profile image
+    profile_image = models.ImageField(upload_to=upload_path+'/%Y/%m/%d', default='users_images/default_avatar.gif')
     # main image (portada)
+    main_image = models.ImageField(upload_to=upload_path+'/%Y/%m/%d', default='users_images/default_main.jpg')
+
     def __unicode__(self):
         return self.user.username
-
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        profile, created = FSUser.objects.get_or_create(user=instance)
-# link user to FSUser creation
-post_save.connect(create_user_profile, sender=User)
-
 
 class Channel(models.Model):
     responsible = models.ForeignKey( FSUser, related_name='responsible' )
@@ -26,12 +23,14 @@ class Channel(models.Model):
         return "[%s] %s" % (self.responsible.user.username, self.topic)
 
 class Post(models.Model):
-    text = models.CharField(max_length=2000)
-    pub_date  = models.DateTimeField()
-    edit_date = models.DateTimeField(blank=True,null=True)
+    upload_path = 'users_images'
+    text = models.CharField(max_length=2000, blank=False)
+    pub_date  = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     user = models.ForeignKey( FSUser )
     channel = models.ForeignKey( Channel )
-    #image = 
+    image = models.ImageField(upload_to=upload_path+'/%Y/%m/%d', blank=True)
+
     def __unicode__(self):
         return "[%s] %s..." % (self.user.user.username,self.text[:30])
 
