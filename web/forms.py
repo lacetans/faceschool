@@ -4,7 +4,6 @@ from django import forms
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
@@ -14,6 +13,10 @@ class UserProfileForm(forms.ModelForm):
         model = FSUser
         fields = ('profile_image',)
 
-class newAdForm(forms.ModelForm):
+class newPostForm(forms.ModelForm):
     class Meta:
         model = Post
+        fields = ('text', 'image', 'user', 'channel')
+        widgets = {
+            'text': forms.Textarea(attrs={'cols': 80, 'rows': 5}),
+        }

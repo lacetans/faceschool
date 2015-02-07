@@ -7,25 +7,30 @@ from django.core.urlresolvers import reverse
 from django.forms.models import modelform_factory
 
 from models import Post
-from forms import UserForm, UserProfileForm, newAdForm
+from forms import UserForm, UserProfileForm, newPostForm
 from models import FSUser
 
 def index( request ):
-    latest_posts = Post.objects.order_by('-pub_date')[:10]
-    # PROBLEM: ucomment line below to view posts
-    # return render( request, 'latest_posts.html', {"latest_posts": latest_posts} )
 
-    newAdFormSet = modelform_factory(Post)
+    context = RequestContext(request)
+
+    latest_posts = Post.objects.order_by('-pub_date')[:10]
+
     if request.method == 'POST':
-        formset = newAdFormSet(request.POST, request.FILES)
+        formset = newPostForm(request.POST,  request.FILES)
         if formset.is_valid():
             formset.save()
-            return render_to_response('latest_posts.html', {'state':'Your ad has been successfull created.'}, context_instance = RequestContext(request),)
+
+            return HttpResponseRedirect('/')
+        else:
+            print formset.errors
     else:
-        formset = newAdFormSet()
-    return render_to_response('latest_posts.html',
-                          {'form':formset},
-                          context_instance=RequestContext(request))
+        formset = newPostForm()
+
+    return render(request,'latest_posts.html',
+                  {'form':formset,
+                  "latest_posts": latest_posts},
+                  context_instance=RequestContext(request))
 
 
 def post_detail( request, post_id ):
