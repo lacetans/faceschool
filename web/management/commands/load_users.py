@@ -26,6 +26,7 @@ class Command(BaseCommand):
                 usuari.username = row[index.get('Name')]
                 usuari.first_name = row[index.get('Name')]
                 usuari.last_name = row[index.get('Surname')]
+                usuari.groups = row[index.get('Groups')]
                 usuari.save()
 
             i += 1
@@ -37,6 +38,7 @@ class Command(BaseCommand):
         classroom = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
+        groups = row.find("Groups")
 
 
         if(email <= -1):
@@ -51,7 +53,9 @@ class Command(BaseCommand):
         elif(surname <= -1 ):
             print """Error: Surname and Name not found """
             return 0
-
+        elif(groups <= -1 ):
+            print """Error: Groups not found """
+            return 0
         else:
             row = row.split(";")
             print row
