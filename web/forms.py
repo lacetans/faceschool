@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 from models import FSUser, Post
 from django.contrib.auth.models import User
 from django import forms
@@ -18,5 +20,5 @@ class newPostForm(forms.ModelForm):
         model = Post
         fields = ('text', 'image', 'user', 'channel')
         widgets = {
-            'text': forms.Textarea(attrs={'cols': 80, 'rows': 5}),
+            'text': forms.Textarea(attrs={'cols': 80, 'rows': 5, 'placeholder': 'En què penses?'}),
         }
