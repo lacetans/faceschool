@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.forms.models import modelform_factory
+from django.core.exceptions import ValidationError
 
 from models import Post
 from forms import UserForm, UserProfileForm, newPostForm
@@ -20,7 +21,6 @@ def index( request ):
         formset = newPostForm(request.POST,  request.FILES)
         if formset.is_valid():
             formset.save()
-
             return HttpResponseRedirect('/')
         else:
             print formset.errors

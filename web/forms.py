@@ -3,6 +3,7 @@
 from models import FSUser, Post
 from django.contrib.auth.models import User
 from django import forms
+from django.core import validators
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
