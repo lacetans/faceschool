@@ -11,8 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        cadena = str(args)
-        csv_filepathname = cadena[1:-1]
+        csv_filepathname = PROJECT_ROOT+"/usuaris.csv"
         sys.path.append(PROJECT_ROOT)
         dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
         i = 0
@@ -27,9 +26,8 @@ class Command(BaseCommand):
                 usuari.username = row[index.get('Name')]
                 usuari.first_name = row[index.get('Name')]
                 usuari.last_name = row[index.get('Surname')]
-                #usuari.groups = row[index.get('Groups')]
+                usuari.groups = "teachers"
                 usuari.save()
-
 
             i += 1
     def comprovaCamps(self, row):
@@ -40,7 +38,7 @@ class Command(BaseCommand):
         classroom = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
-
+        groups = row.find("Groups")
 
 
         if(email <= -1):
@@ -55,7 +53,9 @@ class Command(BaseCommand):
         elif(surname <= -1 ):
             print """Error: Surname and Name not found """
             return 0
-
+        elif(groups <= -1 ):
+            print """Error: Groups not found """
+            return 0
         else:
             row = row.split(";")
             print row
@@ -64,8 +64,6 @@ class Command(BaseCommand):
             for i in range(len(row)):
                 index[row[i]] = i
             print index
-            print row
-
 
         return index
 
