@@ -2,6 +2,12 @@ from django.contrib import admin
 
 from models import *
 
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('user','text','channel','pub_date',)
+    def get_queryset(self,request):
+	qs = super(PostAdmin,self).get_queryset(request)
+	qs.filter(user = request.user.fsuser)
+
 # ChannelAdmin requirements can be checked in issue #12 (create channel view)
 # https://github.com/lacetans/faceschool/issues/12
 class ChannelAdmin(admin.ModelAdmin):
@@ -14,25 +20,25 @@ class ChannelAdmin(admin.ModelAdmin):
         return self.readonly_fields + ('responsible',)
     def save_model(self, request, obj, form, change):
         # superuser can modify channel responsible
-        if request.user.is_superuser:
-            obj.save()
-            return
+        #if request.user.is_superuser:
+        obj.save()
+        return
         # force responsible to logged user (when creating channel)
         fsuser = request.user.fsuser
         obj.responsible = fsuser
         obj.save()
-    def queryset(self, request):
+    def get_queryset(self, request):
         qs = super(ChannelAdmin, self).get_queryset(request)
         # superuser can see all channels
-        if request.user.is_superuser:
-            return qs
+        #if request.user.is_superuser:
+        return qs
         # show only owned channels (teachers)
         return qs.filter(responsible=request.user.fsuser)
         
 
 admin.site.register( FSUser )
 admin.site.register( Penalty )
-admin.site.register( Post )
+admin.site.register( Post, PostAdmin )
 admin.site.register( Like )
 admin.site.register( Dislike )
 admin.site.register( Complaint )
