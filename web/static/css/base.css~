@@ -1,0 +1,112 @@
+body, html {
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.header_top {
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	height: 60px;
+	background-color: black;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.header_top .logo_section {
+	display: flex;
+	display: -webkit-flex;
+	width: 15%;
+	justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.header_top .logo_section img {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.header_top .title_top_menu {
+	display: flex;
+	display: -webkit-flex;
+	width: 60%;
+	justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.header_top .title_top_menu h1 {
+	color: white;
+	font-family:Georgia,"arial",Times,serif;
+    font-weight:normal;
+    text-shadow: 0 0 1 black;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.header_top .header_top_menu {
+	display: flex;
+	display: -webkit-flex;
+	width: 15%;
+	justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.header_top .header_top_menu img {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.menu_settings {
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	border: 1px solid black;
+	width: 10%;
+	align-self: flex-end;
+	-webkit-align-self: flex-end;
+	background-color: black;
+	margin-right: 2%;
+	justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-webkit-align-items: center;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.menu_settings p {
+	text-align: center;
+}
+
+.menu_settings p a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-size: 100%;
+	align-self: center;
+	-webkit-align-self: center;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.menu_settings a:hover {
+
+	background-color: white;
+	color: black;
+	padding: 2%;
+
+}
