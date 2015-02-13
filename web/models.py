@@ -35,6 +35,7 @@ class Post(models.Model):
     def __unicode__(self):
         return "[%s] %s..." % (self.user.user.username,self.text[:30])
 
+
 class Comment(Post):
     # same funcionality as Post with the related post
     related_post = models.ForeignKey( Post, related_name='related_post' )
