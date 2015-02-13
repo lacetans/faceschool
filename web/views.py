@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from forms import newPostForm
 from models import *
 
 def index( request ):
@@ -16,6 +17,18 @@ def ShowChannels(request):
 
 def ShowPosts(request, channel_id):
 	
+	if request.method == 'POST':
+		
+		form=newPostForm(request.POST, request.FILES)
+			
+		if form.is_valid():
+		
+			form_save=form.save()		
+					
 	posts=Post.objects.filter(channel__in=channel_id)
 	posts=posts.order_by('-pub_date')
-	return render( request, 'posts.html', {"posts": posts} )
+
+	comments=''
+	form_post=newPostForm()
+	return render( request, 'posts.html', {"posts": posts,"form_post":form_post,"comment":comments} )
+
