@@ -19,13 +19,13 @@ from web.models import Goodwsmasiva
 
 def bmasive_upload_filter(archivo):
     lines = archivo.read().replace('\r\n','')
-    lines = lines.split(',')
+    lines = re.split(', |;',lines)
     for line in lines:
         Badws.objects.create(texto=line)
 
 def gmasive_upload_filter(archivo):
     lines = archivo.read().replace('\r\n','')
-    lines = lines.split(',')
+    lines = re.split(', |;',lines)
     for line in lines:
         Goodws.objects.create(texto=line)
     
