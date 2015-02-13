@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-import datetime
+# import datetime
+from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
@@ -44,8 +45,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         if not self.id:
-            self.pub_date = datetime.datetime.today()
-        self.edit_date = datetime.datetime.today()
+            self.pub_date = timezone.now()
+        self.edit_date = timezone.now()
         return super(Post, self).save(*args, **kwargs)
 
 
