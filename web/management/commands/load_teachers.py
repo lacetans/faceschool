@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        csv_filepathname = PROJECT_ROOT+"/usuaris.csv"
+        csv_filepathname = args[0]
         sys.path.append(PROJECT_ROOT)
         dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
         i = 0
@@ -38,7 +38,6 @@ class Command(BaseCommand):
         classroom = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
-        groups = row.find("Groups")
 
 
         if(email <= -1):
@@ -52,9 +51,6 @@ class Command(BaseCommand):
             return 0
         elif(surname <= -1 ):
             print """Error: Surname and Name not found """
-            return 0
-        elif(groups <= -1 ):
-            print """Error: Groups not found """
             return 0
         else:
             row = row.split(";")

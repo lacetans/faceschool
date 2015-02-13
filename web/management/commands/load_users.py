@@ -11,8 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        cadena = str(args)
-        csv_filepathname = cadena[1:-1]
+        csv_filepathname = args[0]
         sys.path.append(PROJECT_ROOT)
         dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
         i = 0
