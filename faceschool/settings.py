@@ -54,6 +54,13 @@ ROOT_URLCONF = 'faceschool.urls'
 
 WSGI_APPLICATION = 'faceschool.wsgi.application'
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'web/media')
+
+MEDIA_URL = 'http://127.0.0.1:8000/web/media/'
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2.5 # maximum size of temporary files in MB
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
