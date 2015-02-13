@@ -1,3 +1,10 @@
+<h1>Create post!</h1>
+<form action='.' method='post' enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Submit' />
+</form>
+
 <h1>Latest Posts</h1>
 <ul>
 {% for post in latest_posts %}
@@ -10,10 +17,3 @@
     </li>
 {% endfor %}
 </ul>
-
-<h1>Create post!</h1>
-<form action='.' method='post' enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type='submit' value='Submit' />
-</form>
