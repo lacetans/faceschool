@@ -26,7 +26,8 @@ class Command(BaseCommand):
                 usuari.username = row[index.get('Name')]
                 usuari.first_name = row[index.get('Name')]
                 usuari.last_name = row[index.get('Surname')]
-                #usuari.groups = row[index.get('Groups')]
+                usuari.password = "1234"
+                #usuari.groups.add(row[index.get('Groups')])
                 usuari.save()
 
 
