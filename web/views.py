@@ -32,3 +32,6 @@ def ShowPosts(request, channel_id):
 	form_post=newPostForm()
 	return render( request, 'posts.html', {"posts": posts,"form_post":form_post,"comment":comments} )
 
+def LTPosts(request):
+	return render (request, 'latest_posts.html')
+

@@ -22,10 +22,13 @@
 			</nav>
 		</header>
 		<nav class="menu_settings">
-			<p><a href="#">Connectat</a></p>
-			<p><a href="#">Desconnectat</a></p>
-			<p><a href="#">Ajuda</a></p>
-			<p><a href="#">Perfil</a></p>
+			<p id="a1" class="a"><a href="#">LOG IN</a></p>
+			<p id="a2"><a href="#">LOG OUT</a></p>
+			<p id="a3"><a href="#">AJUDA</a></p> 
+			<p id="a4" class="b"><a href="#">PERFIL</a></p>
 		</nav>
+		<section class="content">
+			{% block content %}{% endblock %}
+		</section>
 	</body>
 </html>

@@ -1,5 +1,5 @@
-
-
+{% extends "base.html" %}
+{% block content %}
 <h1>Posts</h1>
 
 	<form action="{{request.path}}" method="post"  enctype="multipart/form-data">
@@ -74,5 +74,5 @@
 		{% endfor %}
 
 		</ul>
-		
+{% endblock %}
 		
