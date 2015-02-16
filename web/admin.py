@@ -6,7 +6,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('user','text','channel','pub_date',)
     def get_queryset(self,request):
 	qs = super(PostAdmin,self).get_queryset(request)
-	qs.filter(user = request.user.fsuser)
+	return qs.filter(user = request.user.fsuser)
 
 
 # ChannelAdmin requirements can be checked in issue #12 (create channel view)
