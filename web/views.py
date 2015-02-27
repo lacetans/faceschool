@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from forms import newPostForm
 from models import *
@@ -11,6 +13,7 @@ def index( request ):
 def post_detail( request, post_id ):
     return HttpResponse("Post detail...")
 
+@login_required
 def ShowChannels(request):
 	channels=Channel.objects.filter(users__in=[request.user.fsuser])
 	return render (request, 'canals.html', {"canals_subs":channels})

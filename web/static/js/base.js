@@ -16,6 +16,9 @@ function inicia_activadors() {
 	} else {
 
 		$("#menu_img").show();
+		$(".menu_settings").hide();
+		document.getElementById("menu_img").addEventListener("click", desplega_menu_tab_mob, false);
+		document.getElementById("menu_img").addEventListener("dblclick", guarda_menu_tab_mob, false);
 		modifica_menu_settings();
 
 	}
@@ -99,5 +102,104 @@ function modifica_menu_settings() {
 
 	$(".menu_settings").css("flex-direction","column");
 	$(".menu_settings").css("-webkit-flex-direction","column");
+	$(".menu_settings").css("height","200px");
+	$(".menu_settings").css("width","100%");
+	$(".menu_settings").css("background-color","rgba(0,0,0,0.7)");
+	$(".menu_settings p").remove();
+	$(".menu_settings").append("<a href='http://localhost:8000/web/login/' id='en1'>LOG IN</a>");
+	$(".menu_settings").append("<a href='http://localhost:8000/web/logout/' id='en2'>LOG OUT</a>");
+	$(".menu_settings").append("<a href='#' id='en3'>AJUDA</a>");
+	$(".menu_settings").append("<a href='#' id='en4'>PERFIL</a>");
+	$(".menu_settings a").css("text-decoration","none");
+	$(".menu_settings a").css("width","100%");
+	$(".menu_settings a").css("height","50px");
+	$(".menu_settings a").css("display","flex");
+	$(".menu_settings a").css("display","-webkit-flex");
+	$(".menu_settings a").css("align-items","center");
+	$(".menu_settings a").css("-webkit-align-items","center");
+	$(".menu_settings a").css("padding-left","3%");
+	$(".menu_settings a").css("color","grey");
+	$('.login_form').css("width","100%");
+	$('.login_form table').css("width","95%");
+	$('.label_log').css("width","32%");
+	$('.input_log').css("width","40%");
+	document.getElementById("en1").addEventListener("mouseover", res_pestanya1_tab_mob, false);
+	document.getElementById("en1").addEventListener("mouseout", des_pestanya1_tab_mob, false);
+	document.getElementById("en2").addEventListener("mouseover", res_pestanya2_tab_mob, false);
+	document.getElementById("en2").addEventListener("mouseout", des_pestanya2_tab_mob, false);
+	document.getElementById("en3").addEventListener("mouseover", res_pestanya3_tab_mob, false);
+	document.getElementById("en3").addEventListener("mouseout", des_pestanya3_tab_mob, false);
+	document.getElementById("en4").addEventListener("mouseover", res_pestanya4_tab_mob, false);
+	document.getElementById("en4").addEventListener("mouseout", des_pestanya4_tab_mob, false);
+	
+}
 
+function desplega_menu_tab_mob() {
+	
+	$(".menu_settings").show("medium");
+	$("#menu_img").css("background-color","orange");
+		
+}
+
+function guarda_menu_tab_mob() {
+	
+	$(".menu_settings").hide("medium");
+	$("#menu_img").css("background-color","black");
+		
+}
+
+function res_pestanya1_tab_mob() {
+	
+	$("#en1").css("background-color","black");
+	$("#en1").css("color","white");
+
+}
+
+function des_pestanya1_tab_mob() {
+	
+	$("#en1").css("background","none");
+	$("#en1").css("color","grey");
+	
+}
+
+function res_pestanya2_tab_mob() {
+	
+	$("#en2").css("background-color","black");
+	$("#en2").css("color","white");
+
+}
+
+function des_pestanya2_tab_mob() {
+	
+	$("#en2").css("background","none");
+	$("#en2").css("color","grey");
+	
+}
+
+function res_pestanya3_tab_mob() {
+	
+	$("#en3").css("background-color","black");
+	$("#en3").css("color","white");
+
+}
+
+function des_pestanya3_tab_mob() {
+	
+	$("#en3").css("background","none");
+	$("#en3").css("color","grey");
+	
+}
+
+function res_pestanya4_tab_mob() {
+	
+	$("#en4").css("background-color","black");
+	$("#en4").css("color","white");
+
+}
+
+function des_pestanya4_tab_mob() {
+	
+	$("#en4").css("background","none");
+	$("#en4").css("color","grey");
+	
 }

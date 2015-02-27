@@ -1,0 +1,83 @@
+.login_form {
+
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	width: 30%;
+	background-color: rgba(0,0,0,0.8);
+	height: 150px;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+	border-radius: 10px;
+	
+}
+
+.log_button {
+
+	align-self: center;
+	background-color: #FF3030;
+	border: 1px solid white;
+	border-radius: 10px;
+	margin-top: 1%;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	display: -webkit-flex;
+
+}
+
+.total {
+
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	-webkit-justify-content: center;
+	margin-top: 15%;
+
+}
+
+.label_log {
+
+	display: flex;
+	display: -webkit-flex;
+	color: white;
+	font-weight: bold;
+
+}
+
+.input_log {
+
+	display: flex;
+	display: -webkit-flex;
+	min-width: 20px;
+
+}
+
+.logout_message {
+	
+	display: flex;
+	display: -webkit-flex;
+	align-self: center;
+
+}
+
+.login_form table {
+
+	display: flex;
+	display: -webkit-flex;
+
+}
+
+.login_form table tr {
+
+	display: flex;
+	display: -webkit-flex;
+
+}
+
+
+
