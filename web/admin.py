@@ -35,8 +35,9 @@ class ChannelAdmin(admin.ModelAdmin):
         #if request.user.is_superuser:
         return qs
         # show only owned channels (teachers)
-        return qs.filter(responsible=request.user.fsuser)
-        
+        return qs.filter(users=request.user.fsuser)
+
+      
 
 admin.site.register( FSUser )
 admin.site.register( Penalty )
@@ -46,4 +47,6 @@ admin.site.register( Dislike )
 admin.site.register( Complaint )
 admin.site.register( Channel, ChannelAdmin )
 admin.site.register( Comment )
+admin.site.register( Badws )
+admin.site.register( Goodws )
 
