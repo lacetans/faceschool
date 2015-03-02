@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>
+    List of exceptions words to filter     
+  </h1>
+  <a href="/web/goodw/" style="text-decoration:none"><input type="button" value="Add Word"></a>
+<a href="/web/goodwmasiva/" style="text-decoration:none"><input type="button" value="Add file"></a>  
+<a href="/web/removegoodw/" style="text-decoration:none"><input type="button" value="Delete word"></a>    
+    
+  
+  
+  {% for word in goodws %}
+    
+  <div class="art">
+    
+    
+    <p>
+      {{ word.texto }}
+          
+    </p>
+      
+  </div>
+    
+    
+  
+  
+  {% endfor %}
+  
+</div>
