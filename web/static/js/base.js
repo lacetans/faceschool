@@ -119,10 +119,6 @@ function modifica_menu_settings() {
 	$(".menu_settings a").css("-webkit-align-items","center");
 	$(".menu_settings a").css("padding-left","3%");
 	$(".menu_settings a").css("color","grey");
-	$('.login_form').css("width","100%");
-	$('.login_form table').css("width","95%");
-	$('.label_log').css("width","32%");
-	$('.input_log').css("width","40%");
 	document.getElementById("en1").addEventListener("mouseover", res_pestanya1_tab_mob, false);
 	document.getElementById("en1").addEventListener("mouseout", des_pestanya1_tab_mob, false);
 	document.getElementById("en2").addEventListener("mouseover", res_pestanya2_tab_mob, false);
