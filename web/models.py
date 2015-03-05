@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 
 class FSUser(models.Model):
     user = models.OneToOneField( User )
+    _class = models.CharField(max_length=20)
     # profile image
     # main image (portada)
     def __unicode__(self):
