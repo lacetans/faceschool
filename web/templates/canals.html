@@ -1,0 +1,6 @@
+<h1> Canals </h1>
+<ul>
+{% for canal in canals_subs %}
+    <li> <a href="/web/channel/{{ canal.id }}">  {{ canal.topic }}  </a>  <p> {{ canal.description }} </p></li>
+{% endfor %}
+</ul>

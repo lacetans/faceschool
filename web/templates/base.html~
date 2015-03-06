@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		{% load staticfiles %}
+		<link type="image/x-icon" href="{% static "imatges/logo_final_title.ico" %}" rel="icon" /> 
+		<title>Faceschool</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+        	<script type="text/javascript" src="{% static "js/base.js" %}"></script>
+        	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+	</head>
+	<body>
+		<header class="header_top">
+			<section class="logo_section">
+				<img src="{% static "imatges/logo_final.png" %}" alt="logo_faceschool">
+			</section>
+			<section class="title_top_menu">
+				<h1>FACESCHOOL</h1>
+			</section>
+			<nav class="header_top_menu">
+				<img id="menu_img" src="{% static "imatges/menu.png" %}" alt="menu">
+			</nav>
+		</header>
+		<nav class="menu_settings">
+			<p><a href="#">Connectat</a></p>
+			<p><a href="#">Desconnectat</a></p>
+			<p><a href="#">Ajuda</a></p>
+			<p><a href="#">Perfil</a></p>
+		</nav>
+	</body>
+</html>

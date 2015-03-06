@@ -23,10 +23,11 @@ class Command(BaseCommand):
                 usuari = User()
 
                 usuari.email = row[index.get('E-mail')]
-                usuari.username = row[index.get('Name')]
+                usuari.username = row[index.get('E-mail')]
                 usuari.first_name = row[index.get('Name')]
+                usuari.password = "1234"
                 usuari.last_name = row[index.get('Surname')]
-                usuari.groups = "teachers"
+                usuari.groups.add("teachers")
                 usuari.save()
 
             i += 1
@@ -35,16 +36,12 @@ class Command(BaseCommand):
         row = ';'.join(row)
 
         email = row.find("E-mail")
-        classroom = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
 
 
         if(email <= -1):
             print """Error: E-mail not found """
-            return 0
-        elif(classroom <= -1):
-            print """Error: Classroom not found """
             return 0
         elif(name <= -1):
             print """Error: Name not found"""

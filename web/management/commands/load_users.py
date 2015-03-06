@@ -31,8 +31,9 @@ class Command(BaseCommand):
                     usuari.username = username
                     usuari.first_name = row[index.get('Name')]
                     usuari.last_name = row[index.get('Surname')]
-                    #usuari.FSUser._class = row[index.get('Class')]
+                    usuari.fsuser.classroom = row[index.get('Class')]
                     usuari.save()
+
 
 
             i += 1

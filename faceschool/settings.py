@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+STATIC_URL = '/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -53,6 +54,13 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'faceschool.urls'
 
 WSGI_APPLICATION = 'faceschool.wsgi.application'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'web/media')
+
+MEDIA_URL = 'http://127.0.0.1:8000/web/media/'
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2.5 # maximum size of temporary files in MB
+
 
 
 # Database
