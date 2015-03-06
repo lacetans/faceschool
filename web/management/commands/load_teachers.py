@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
         csv_filepathname = args[0]
         sys.path.append(PROJECT_ROOT)
-        dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
+        dataReader = csv.reader(open(csv_filepathname), delimiter=';', quotechar='"')
         i = 0
         index = {}
         for row in dataReader:
@@ -21,27 +21,60 @@ class Command(BaseCommand):
                 index = self.comprovaCamps(row)
             else:
                 usuari = User()
+                name = row[index.get('Name')]
+                surname = row[index.get('Surname')]
+                email = row[index.get('E-mail')]
 
-                usuari.email = row[index.get('E-mail')]
-                usuari.username = row[index.get('E-mail')]
-                usuari.first_name = row[index.get('Name')]
-                usuari.password = "1234"
-                usuari.last_name = row[index.get('Surname')]
-                usuari.groups.add("teachers")
-                usuari.save()
+                username = self.comprovaUser(name, surname, email, usuari)
+                if(username!=False):
+                    usuari.email = row[index.get('E-mail')]
+                    usuari.username = username
+                    usuari.first_name = row[index.get('Name')]
+                    usuari.last_name = row[index.get('Surname')]
+                    usuari.groups.add("teachers")
+                    usuari.save()
+                    usuari.fsuser.classroom = row[index.get('Classroom')]
+
+
 
             i += 1
+    def comprovaUser(self, name, surname, email, usuari):
+
+        surname = surname.replace(" ", "")
+        username = surname+name
+        raw_input("""""")
+        totalUsers = User.objects.all()
+
+        print totalUsers
+
+
+        for usr in totalUsers:
+
+            if(usr.username==username):
+                if(usr.email==email):
+                    return False
+                else:
+                    surname = surname+name+str(1)
+                    return surname
+
+        return username
+
     def comprovaCamps(self, row):
 
         row = ';'.join(row)
 
         email = row.find("E-mail")
+        _class = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
 
 
+
         if(email <= -1):
             print """Error: E-mail not found """
+            return 0
+        elif(_class <= -1):
+            print """Error: Classroom not found """
             return 0
         elif(name <= -1):
             print """Error: Name not found"""
@@ -49,6 +82,7 @@ class Command(BaseCommand):
         elif(surname <= -1 ):
             print """Error: Surname and Name not found """
             return 0
+
         else:
             row = row.split(";")
             print row
@@ -57,6 +91,8 @@ class Command(BaseCommand):
             for i in range(len(row)):
                 index[row[i]] = i
             print index
+            print row
+
 
         return index
 
