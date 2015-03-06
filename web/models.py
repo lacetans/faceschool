@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 
 class FSUser(models.Model):
     user = models.OneToOneField( User )
+    classroom = models.CharField(max_length=20)
     upload_path = 'users_images'
     # profile image
     profile_image=models.ImageField(upload_to=upload_path+'/%Y/%m/%d', default='users_images/default_avatar.gif')
