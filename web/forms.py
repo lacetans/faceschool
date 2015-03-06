@@ -4,6 +4,7 @@ from models import FSUser, Post
 from django.contrib.auth.models import User
 from django import forms
 from django.core import validators
+from models import Badws, Goodws, Removebadws, Removegoodws, Badwsmasiva, Goodwsmasiva
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -31,3 +32,40 @@ class newPostForm(forms.ModelForm):
             'channel':forms.HiddenInput(),
             'user':forms.HiddenInput()
         }
+
+
+
+class PostForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Post
+
+class BadwForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Badws
+
+class GoodwForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Goodws
+
+class RemovebadwForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Badws
+
+class RemovegoodwForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Goodws
+
+class BadwmasivaForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Badwsmasiva
+
+class GoodwmasivaForm(forms.ModelForm):
+ 
+   class Meta:
+      model = Goodwsmasiva

@@ -6,10 +6,10 @@
 		<title>Faceschool</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+		<link rel="stylesheet" type="text/css" href="{% static "css/login.css" %}">
         	<script type="text/javascript" src="{% static "js/base.js" %}"></script>
         	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
         	<script type="text/javascript" src="{% static "js/funcions_ajax.js" %}"></script>
-
 	</head>
 	<body>
 		<header class="header_top">
@@ -24,8 +24,8 @@
 			</nav>
 		</header>
 		<nav class="menu_settings">
-			<p id="a1" class="a"><a href="#">LOG IN</a></p>
-			<p id="a2"><a href="#">LOG OUT</a></p>
+			<p id="a1" class="a"><a href="{% url 'django.contrib.auth.views.login' %}">LOG IN</a></p>
+			<p id="a2"><a href="{% url 'django.contrib.auth.views.logout' %}">LOG OUT</a></p>
 			<p id="a3"><a href="#">AJUDA</a></p> 
 			<p id="a4" class="b"><a href="#">PERFIL</a></p>
 		</nav>
