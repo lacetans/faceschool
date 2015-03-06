@@ -1,86 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="post_channel">
-<h1>Posts</h1>
-
-	<form action="{{request.path}}" method="post"  enctype="multipart/form-data">
-		{% csrf_token %}
-		
-		{% for field in form_post %}
-		
-		<div class="fieldWrapper">
-
-			{{ field.errors }}
-			{{ field.label_tag }} {{ field }}
-			
-		</div>
-		
-		{% endfor %}
-		
-		<input type="submit" value="Envia" />
-	</form>
-	
-<br><br>
+<section class="total_main">
+	<section class="channels">
+		<h1> CANALS </h1>
 		<ul>
-		{% for post in posts %}
-
-			<li>{{ post.user }} </li>
-			<li> <img src="{{MEDIA_URL}}{{ post.user.profile_image }}" alt="user_image" width="100" height="100"> </li>
-			<li>  
-				{% if post.pub_edit %} 
-					{{ post.pub_edit }}
-				{% else %}
-					{{ post_pub_date }}
-				{% endif %}
-			</li>
-
-			<li>			
-			{% if post.image %}
-			<img src='{{MEDIA_URL}}{{post.image}}' alt='post_image' width=40%>
-			{% endif %}
-			</li>
-
-			<li>{{ post.text }}</li>
-			
-			{{comment}}
-			
-			<li> <button id="post_like"> LIKE </button></li>
-			<li> <button id="post_dislike"> DISLIKE </button></li>
-			
-				<ul> 
-					<li>{{ comment.user }} </li>
-					<li> {{ comment.user.profile_image }} </li>
-				
-					<li>  
-						<br><br>
-						{% if comment.pub_edit %}
-							{{ comment.pub_edit }}
-						{% else %}
-							{{ comment.pub_date }}
-						{% endif %}
-					</li>
-					<li>{{ comment.text }}</li>
-						{% if comment.image %}
-							{{ comment.image }}
-						{% endif %}
-							
-					<li> <button id="comment_like"> LIKE </button></li>
-					<li> <button id="comment_dislike"> DISLIKE </button></li>
-				
-				</ul>
-				
-			<br><br>
-			
+		{% for canal in canals_subs %}
+		    <li> <a href="/web/channel/{{ canal.id }}">  {{ canal.topic }}  </a>  <p> {{ canal.description }} </p></li>
 		{% endfor %}
-
 		</ul>
-</section>
-<section class="channels">
-	<h1> Canals </h1>
-	<ul>
-	{% for canal in canals_subs %}
-	    <li> <a href="/web/channel/{{ canal.id }}">  {{ canal.topic }}  </a>  <p> {{ canal.description }} </p></li>
-	{% endfor %}
+	</section>
+	<ul class="links">
+		<li><a href="http://localhost:8000/web/badw">AFEGEIX UNA PARAULA PROHIBIDA</a></li>
+		<li><a href="http://localhost:8000/web/goodw">AFEGEIX UNA PARAULA PERMESA</a></li>
+		<li><a href="http://localhost:8000/web/removebadw">SUPRIMEIX UNA PARAULA PROHIBIDA</a></li>
+		<li><a href="http://localhost:8000/web/removegoodw">SUPRIMEIX UNA PARAULA PERMESA</a></li>
 	</ul>
 </section>
 {% endblock %}

@@ -1,7 +1,13 @@
-<form action="/web/removebadw/" method="post">{% csrf_token %}
-<ul>
+{% extends "base.html" %}
+{% block content %}
+<section class="body_bdwdel">
+<form class="bdw_del_form" action="/web/removebadw/" method="post">{% csrf_token %}
+<ul class="inputbdwdel">
 {{ form.as_ul }}
 </ul>
 
-<input type="submit" name="submit" value="Delete word">
+<input class="bdwdelbutton" type="submit" name="submit" value="Delete word">
+<button class="redirect" type="button" onclick="redirect()">TORNA A LA LLISTA DE CANALS</button>
 </form>
+</section>
+{% endblock %}

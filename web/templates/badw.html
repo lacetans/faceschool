@@ -1,7 +1,13 @@
-<form action="/web/badw/" method="post">{% csrf_token %}
-<ul>
+{% extends "base.html" %}
+{% block content %}
+<section class="body_dbwcreate">
+<form class="dbw_create_form" action="/web/badw/" method="post">{% csrf_token %}
+<ul class="inputbdw">
 {{ form.as_ul }}
 </ul>
 
-<input type="submit" name="submit" value="Add word">
+<input class="bdwbutton" type="submit" name="submit" value="Add word">
+<button class="redirect" type="button" onclick="redirect()">TORNA A LA LLISTA DE CANALS</button>
 </form>
+</section>
+{% endblock %}

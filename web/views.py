@@ -19,17 +19,18 @@ from remove_filter import bremove_filter
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
-def index( request ):
+def index(request):
     latest_posts = Post.objects.order_by('-pub_date')[:5]
-    return render( request, 'main.html', {"latest_posts": latest_posts} )
+    channels=Channel.objects.filter(users__in=[request.user.fsuser])
+    return render( request, 'main.html', {"latest_posts": latest_posts, "canals_subs":channels})
 
 def post_detail( request, post_id ):
     return HttpResponse("Post detail...")
 
-@login_required
 def ShowChannels(request):
 	channels=Channel.objects.filter(users__in=[request.user.fsuser])
 	return render (request, 'canals.html', {"canals_subs":channels})
+
 
 def ShowPosts(request, channel_id):
 	
@@ -50,7 +51,6 @@ def ShowPosts(request, channel_id):
 
 def LTPosts(request):
 	return render (request, 'latest_posts.html')
-
 
 def crear(request):
     if request.POST:
