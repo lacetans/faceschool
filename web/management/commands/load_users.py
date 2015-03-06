@@ -31,8 +31,9 @@ class Command(BaseCommand):
                     usuari.username = username
                     usuari.first_name = row[index.get('Name')]
                     usuari.last_name = row[index.get('Surname')]
-                    usuari.fsuser.classroom = row[index.get('Class')]
+                    usuari.groups.add("alumnes")
                     usuari.save()
+                    usuari.fsuser.classroom = row[index.get('Classroom')]
 
 
 
@@ -63,7 +64,7 @@ class Command(BaseCommand):
         row = ';'.join(row)
 
         email = row.find("E-mail")
-        _class = row.find("Class")
+        _class = row.find("Classroom")
         surname = row.find("Surname")
         name = row.find("Name")
 
