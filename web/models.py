@@ -63,6 +63,9 @@ class Like(models.Model):
     post = models.ForeignKey( Post )
     user = models.ForeignKey( FSUser )
     date = models.DateTimeField()
+    def save(self, *args, **kwargs):
+        self.date = datetime.datetime.today()
+        return super(Like, self).save(*args, **kwargs)
 
 class Dislike(models.Model):
     post = models.ForeignKey( Post )

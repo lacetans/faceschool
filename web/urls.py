@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^channels/$',views.ShowChannels, name="channels"),
     url(r'^channel/(?P<channel_id>[0-9]+)/$',views.ShowPosts,name="posts"),
     url(r'^posts/$',views.LTPosts, name="posts"),
+    url(r'^like_post/$',views.LikePost, name="like_post"),
 ]

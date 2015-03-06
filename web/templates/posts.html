@@ -17,12 +17,18 @@
 		{% endfor %}
 		
 		<input type="submit" value="Envia" />
+		
 	</form>
 	
-<br><br>
+	{% for like in likes %}
+	{{ like.post }}
+	{{ like.user }}
+	{{ like.date }}
+	{% endfor %}
 
-		<ul>
+<br><br>
 		{% for post in posts %}
+		<ul>
 
 			<li>{{ post.user }} </li>
 			<li> <img src="{{MEDIA_URL}}{{ post.user.profile_image }}" alt="user_image" width="100" height="100"> </li>
@@ -30,49 +36,23 @@
 				{% if post.pub_edit %} 
 					{{ post.pub_edit }}
 				{% else %}
-					{{ post_pub_date }}
+					{{ post.pub_date }}
 				{% endif %}
 			</li>
 
-			<li>			
+
 			{% if post.image %}
-			<img src='{{MEDIA_URL}}{{post.image}}' alt='post_image' width=40%>
+			<li><img src='{{MEDIA_URL}}{{post.image}}' alt='post_image' width=40%>	</li>
 			{% endif %}
-			</li>
 
 			<li>{{ post.text }}</li>
-			
-			{{comment}}
-			
-			<li> <button id="post_like"> LIKE </button></li>
-			<li> <button id="post_dislike"> DISLIKE </button></li>
-			
-				<ul> 
-					<li>{{ comment.user }} </li>
-					<li> {{ comment.user.profile_image }} </li>
-				
-					<li>  
-						<br><br>
-						{% if comment.pub_edit %}
-							{{ comment.pub_edit }}
-						{% else %}
-							{{ comment.pub_date }}
-						{% endif %}
-					</li>
-					<li>{{ comment.text }}</li>
-						{% if comment.image %}
-							{{ comment.image }}
-						{% endif %}
-							
-					<li> <button id="comment_like"> LIKE </button></li>
-					<li> <button id="comment_dislike"> DISLIKE </button></li>
-				
-				</ul>
-				
-			<br><br>
-			
-		{% endfor %}
 
+			
+			<li> <button id="post_like" class="{{ post.id }}d"> LIKE </button></li>
+			<li> <button id="post_dislike" class="{{ post.id }}d"> DISLIKE </button></li>
+			
 		</ul>
+
+		{% endfor %}
 {% endblock %}
 		

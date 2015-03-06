@@ -19,11 +19,15 @@ class UserProfileForm(forms.ModelForm):
 class newPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('text', 'image','channel','user')
+        fields = ('text','image','channel','user')
         labels = {
 			'text':'text',
 			'image':'image',
+            'channel':'',
+            'user':'',
         }
         widgets = {
             'text': forms.Textarea(attrs={'cols': 80, 'rows': 5, 'placeholder': 'En què penses?'}),
+            'channel':forms.HiddenInput(),
+            'user':forms.HiddenInput()
         }

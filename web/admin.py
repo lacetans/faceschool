@@ -4,14 +4,16 @@ from models import *
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('user','text','channel','pub_date',)
+
     def get_queryset(self,request):
-	qs = super(PostAdmin,self).get_queryset(request)
-	return qs.filter(user = request.user.fsuser)
+    	qs = super(PostAdmin,self).get_queryset(request)
+    	return qs.filter(user = request.user.fsuser)
 
 
 # ChannelAdmin requirements can be checked in issue #12 (create channel view)
 # https://github.com/lacetans/faceschool/issues/12
 class ChannelAdmin(admin.ModelAdmin):
+    
     list_display = ('topic','responsible',)
     filter_horizontal = ('users',)
 
