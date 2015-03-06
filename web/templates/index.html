@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>
+    Hola Enric qué pasa, bienvenido
+      
+  </h1>
+  <a href="/crear/"><input type="button" value="Formulario contacto"></a>    
+    
+  
+  <hr />
+  {% for articulo in articulos %}
+    
+  <div class="art">
+    <h2>
+     Asunto:  {{ articulo.titulo }}
+          
+    </h2>
+        
+        
+    
+    <h3>
+      Enviado el {{ articulo.fecha }} por {{ articulo.autor }}
+          
+    </h3>
+        
+        
+    
+    <p>
+      Mensaje: {{ articulo.texto }}
+          
+    </p>
+      
+  </div>
+    
+    
+  
+  <hr />
+  {% endfor %}
+  
+</div>

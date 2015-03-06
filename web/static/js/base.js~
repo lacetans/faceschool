@@ -1,31 +1,205 @@
 window.onload = inicia_activadors;
 
 function inicia_activadors() {
-	$(".menu_settings").hide();
-	document.getElementById("menu_img").addEventListener("click", cambia_estat_menu1, false);
-	document.getElementById("menu_img").addEventListener("dblclick", cambia_estat_menu2, false);
-	document.getElementById("menu_img").addEventListener("mouseover", resalta_icona_menu, false);
-	document.getElementById("menu_img").addEventListener("mouseout", desresalta_icona_menu, false);
+	if (window.innerWidth > 950) {
+
+		$("#menu_img").hide();
+		document.getElementById("a1").addEventListener("mouseover", resalta_icona_menu1_pc, false);
+		document.getElementById("a1").addEventListener("mouseout", desresalta_icona_menu1_pc, false);
+		document.getElementById("a2").addEventListener("mouseover", resalta_icona_menu2_pc, false);
+		document.getElementById("a2").addEventListener("mouseout", desresalta_icona_menu2_pc, false);
+		document.getElementById("a3").addEventListener("mouseover", resalta_icona_menu3_pc, false);
+		document.getElementById("a3").addEventListener("mouseout", desresalta_icona_menu3_pc, false);
+		document.getElementById("a4").addEventListener("mouseover", resalta_icona_menu4_pc, false);
+		document.getElementById("a4").addEventListener("mouseout", desresalta_icona_menu4_pc, false);
+	
+	} else {
+
+		$("#menu_img").show();
+		$(".menu_settings").hide();
+		document.getElementById("menu_img").addEventListener("click", desplega_menu_tab_mob, false);
+		document.getElementById("menu_img").addEventListener("dblclick", guarda_menu_tab_mob, false);
+		modifica_menu_settings();
+
+	}
+	
 }
 
-function cambia_estat_menu1() {
-	$("#menu_img").css("background-color","grey");
+
+// Resolució mode ordinador
+
+function resalta_icona_menu1_pc() {
+
+	$("#a1").css("background-color","black");
+	$("#a1").css("border-bottom","1px solid orange");
+	$("#a1").css("border-top","1px solid orange");
+	$("#a1 a").css("color","orange");
+
+}
+
+function desresalta_icona_menu1_pc() {
+
+	$("#a1").css("background-color","white");
+	$("#a1").css("border","none");
+	$("#a1 a").css("color","black");
+
+}
+
+function resalta_icona_menu2_pc() {
+
+	$("#a2").css("background-color","black");
+	$("#a2").css("border-bottom","1px solid orange");
+	$("#a2").css("border-top","1px solid orange");
+	$("#a2 a").css("color","orange");
+
+}
+
+function desresalta_icona_menu2_pc() {
+
+	$("#a2").css("background-color","white");
+	$("#a2").css("border","none");
+	$("#a2 a").css("color","black");
+
+}
+
+function resalta_icona_menu3_pc() {
+
+	$("#a3").css("background-color","black");
+	$("#a3").css("border-bottom","1px solid orange");
+	$("#a3").css("border-top","1px solid orange");
+	$("#a3 a").css("color","orange");
+
+}
+
+function desresalta_icona_menu3_pc() {
+
+	$("#a3").css("background-color","white");
+	$("#a3").css("border","none");
+	$("#a3 a").css("color","black");
+
+}
+
+function resalta_icona_menu4_pc() {
+
+	$("#a4").css("background-color","black");
+	$("#a4").css("border-bottom","1px solid orange");
+	$("#a4").css("border-top","1px solid orange");
+	$("#a4 a").css("color","orange");
+
+}
+
+function desresalta_icona_menu4_pc() {
+
+	$("#a4").css("background-color","white");
+	$("#a4").css("border","none");
+	$("#a4 a").css("color","black");
+
+}
+
+// Resolució mode tables i móbil
+
+function modifica_menu_settings() {
+
+	$(".menu_settings").css("flex-direction","column");
+	$(".menu_settings").css("-webkit-flex-direction","column");
+	$(".menu_settings").css("height","200px");
+	$(".menu_settings").css("width","100%");
+	$(".menu_settings").css("background-color","rgba(0,0,0,0.7)");
+	$(".menu_settings p").remove();
+	$(".menu_settings").append("<a href='http://localhost:8000/web/login/' id='en1'>LOG IN</a>");
+	$(".menu_settings").append("<a href='http://localhost:8000/web/logout/' id='en2'>LOG OUT</a>");
+	$(".menu_settings").append("<a href='#' id='en3'>AJUDA</a>");
+	$(".menu_settings").append("<a href='#' id='en4'>PERFIL</a>");
+	$(".menu_settings a").css("text-decoration","none");
+	$(".menu_settings a").css("width","100%");
+	$(".menu_settings a").css("height","50px");
+	$(".menu_settings a").css("display","flex");
+	$(".menu_settings a").css("display","-webkit-flex");
+	$(".menu_settings a").css("align-items","center");
+	$(".menu_settings a").css("-webkit-align-items","center");
+	$(".menu_settings a").css("padding-left","3%");
+	$(".menu_settings a").css("color","grey");
+	$('.login_form').css("width","100%");
+	$('.login_form table').css("width","95%");
+	$('.label_log').css("width","32%");
+	$('.input_log').css("width","65%");
+	document.getElementById("en1").addEventListener("mouseover", res_pestanya1_tab_mob, false);
+	document.getElementById("en1").addEventListener("mouseout", des_pestanya1_tab_mob, false);
+	document.getElementById("en2").addEventListener("mouseover", res_pestanya2_tab_mob, false);
+	document.getElementById("en2").addEventListener("mouseout", des_pestanya2_tab_mob, false);
+	document.getElementById("en3").addEventListener("mouseover", res_pestanya3_tab_mob, false);
+	document.getElementById("en3").addEventListener("mouseout", des_pestanya3_tab_mob, false);
+	document.getElementById("en4").addEventListener("mouseover", res_pestanya4_tab_mob, false);
+	document.getElementById("en4").addEventListener("mouseout", des_pestanya4_tab_mob, false);
+	
+}
+
+function desplega_menu_tab_mob() {
+	
 	$(".menu_settings").show("medium");
-
+	$("#menu_img").css("background-color","orange");
+		
 }
 
-function cambia_estat_menu2() {
+function guarda_menu_tab_mob() {
+	
+	$(".menu_settings").hide("medium");
 	$("#menu_img").css("background-color","black");
-	$(".menu_settings").hide();
+		
+}
+
+function res_pestanya1_tab_mob() {
+	
+	$("#en1").css("background-color","black");
+	$("#en1").css("color","white");
 
 }
 
-function resalta_icona_menu() {
-	$("#menu_img").css("background-color","grey");	
+function des_pestanya1_tab_mob() {
+	
+	$("#en1").css("background","none");
+	$("#en1").css("color","grey");
+	
+}
+
+function res_pestanya2_tab_mob() {
+	
+	$("#en2").css("background-color","black");
+	$("#en2").css("color","white");
 
 }
 
-function desresalta_icona_menu() {
-	$("#menu_img").css("background-color","black");
+function des_pestanya2_tab_mob() {
+	
+	$("#en2").css("background","none");
+	$("#en2").css("color","grey");
+	
+}
 
+function res_pestanya3_tab_mob() {
+	
+	$("#en3").css("background-color","black");
+	$("#en3").css("color","white");
+
+}
+
+function des_pestanya3_tab_mob() {
+	
+	$("#en3").css("background","none");
+	$("#en3").css("color","grey");
+	
+}
+
+function res_pestanya4_tab_mob() {
+	
+	$("#en4").css("background-color","black");
+	$("#en4").css("color","white");
+
+}
+
+function des_pestanya4_tab_mob() {
+	
+	$("#en4").css("background","none");
+	$("#en4").css("color","grey");
+	
 }

@@ -27,6 +27,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'http://localhost:8000/web/posts'
+
 
 # Application definition
 

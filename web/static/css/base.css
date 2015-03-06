@@ -30,6 +30,8 @@ body, html {
 
 .header_top .logo_section img {
 	width: 80px;
+	min-width: 40px;
+	min-height: 30px;
 	height: 50px;
 	border-radius: 10px;
 }
@@ -47,10 +49,10 @@ body, html {
 .header_top .title_top_menu h1 {
 	color: white;
 	font-family:Georgia,"arial",Times,serif;
-    font-weight:normal;
-    text-shadow: 0 0 1 black;
-    font-weight: bold;
-    font-size: 150%;
+    	font-weight:normal;
+    	text-shadow: 0 0 1 black;
+    	font-weight: bold;
+    	font-size: 90%;
 }
 
 .header_top .header_top_menu {
@@ -70,32 +72,46 @@ body, html {
 }
 
 .menu_settings {
-	display: flex;
-	display: -webkit-flex;
-	flex-direction: column;
-	-webkit-flex-direction: column;
-	border: 1px solid black;
-	width: 10%;
-	align-self: flex-end;
-	-webkit-align-self: flex-end;
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	width: 95%;
 	background-color: black;
-	margin-right: 2%;
+	align-self: center;
+	-webkit-align-self: center;
 	justify-content: center;
 	-webkit-justify-content: center;
 	align-items: center;
 	-webkit-align-items: center;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	height: 50px;
 }
 
 .menu_settings p {
 	text-align: center;
+	height: 85%;
+	background-color: white;
+	width: 25%;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+}
+
+.menu_settings p.a {
+	margin-left: 2%;
+}
+
+.menu_settings p.b {
+	margin-right: 2%;
 }
 
 .menu_settings p a {
 	text-decoration: none;
-	color: white;
 	font-weight: bold;
+	color: black;
 	font-size: 100%;
 	align-self: center;
 	-webkit-align-self: center;
@@ -103,10 +119,6 @@ body, html {
 	border-radius: 10px;
 }
 
-.menu_settings a:hover {
 
-	background-color: white;
-	color: black;
-	padding: 2%;
 
-}
+

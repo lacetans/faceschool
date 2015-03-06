@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<section class="post_channel">
 <h1>Posts</h1>
 
 	<form action="{{request.path}}" method="post"  enctype="multipart/form-data">
@@ -73,5 +74,13 @@
 		{% endfor %}
 
 		</ul>
+</section>
+<section class="channels">
+	<h1> Canals </h1>
+	<ul>
+	{% for canal in canals_subs %}
+	    <li> <a href="/web/channel/{{ canal.id }}">  {{ canal.topic }}  </a>  <p> {{ canal.description }} </p></li>
+	{% endfor %}
+	</ul>
+</section>
 {% endblock %}
-		

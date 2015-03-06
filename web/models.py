@@ -54,8 +54,6 @@ class Post(models.Model):
         self.edit_date = datetime.datetime.today()
         return super(Post, self).save(*args, **kwargs)
 
-
-
 class Comment(Post):
     # same funcionality as Post with the related post
     related_post = models.ForeignKey( Post, related_name='related_post' )
@@ -87,3 +85,25 @@ class Penalty(models.Model):
     total = models.BooleanField(default=False)
     end_date = models.DateTimeField(blank=True)
     channel = models.ForeignKey( Channel, blank=True, null=True )
+
+class Badws(models.Model):
+    texto = models.CharField(max_length = 30)
+    def __unicode__(self):
+        return self.texto
+
+class Goodws(models.Model):
+    texto = models.CharField(max_length = 30)
+    def __unicode__(self):
+        return self.texto
+
+class Removebadws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Removegoodws(models.Model):
+    texto = models.CharField(max_length = 30)
+
+class Badwsmasiva(models.Model):
+    archivo = models.FileField(upload_to='import/')
+
+class Goodwsmasiva(models.Model):
+    archivo = models.FileField(upload_to='import/')
